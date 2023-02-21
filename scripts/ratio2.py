@@ -121,10 +121,15 @@ class BooruPromptsScript(scripts.Script):
 	# def __init__(self) -> None:
 	# 	super().__init__()
 
-	def __init__(self, res=(512, 512), **kwargs):
+	def __init__(self, res=(512, 512),**kwargs):
 		super().__init__(**kwargs)
-		self.t2i_w, self.t2i_h = res,res
-		self.i2i_w, self.i2i_h = res,res
+		self.t2i_w = 512
+		self.t2i_h = 512
+		self.i2i_w = 512
+		self.i2i_h = 512
+
+	
+		
 		
 	def title(self):
 		return("Proportion Ratio 1")
@@ -169,7 +174,7 @@ class BooruPromptsScript(scripts.Script):
 							mytext = gr.Textbox()
 							for title, name, ratio in zip(teste()[0], teste()[1], teste()[2]):
 								name =gr.Button(value=name+"-"+title,elem_id=ratio).style(full_width=False)
-								name.click(greet, inputs=name, outputs=mytext) 
+								# name.click(greet, inputs=name, outputs=mytext) 
 							image_output = gr.Image()  
 							gr.Markdown("Portraits")
 						image_button = gr.Button("Flip")
