@@ -6,14 +6,12 @@ import gradio as gr
 import contextlib
 from modules import script_callbacks, scripts, shared
 from modules.shared import opts
-import requests
-import bs4
-from bs4 import BeautifulSoup
+
 from pathlib import Path
 import json
 
-# diretorio = scripts.basedir()
-# file = Path(diretorio, "resolution.json")
+diretorio = scripts.basedir()
+file = Path(diretorio, "resolution.json")
 
 def on_ui_settings():
 	section = ('ratio-imagems', "ratio-imagems")
@@ -38,18 +36,18 @@ def calculate_new_dimensions(original_width, original_height, target_width=None,
 
 	return {'width': round(new_width,0), 'height': round(new_height,0)}
 
-# def teste():
-# 	title, name, ratio, res_w, res_h = [], [], [], [], []  
-# 	with open(f"{file}") as fileS:
-# 		MYJSON = json.load(fileS)
+def teste():
+	title, name, ratio, res_w, res_h = [], [], [], [], []  
+	with open(f"{file}") as fileS:
+		MYJSON = json.load(fileS)
 
-# 	for i in MYJSON:
-# 		title.append(i["title"])
-# 		name.append(i["name"])
-# 		ratio.append(i["ratio"])
-# 		res_w.append(i["res_w"])
-# 		res_h.append(i["res_h"])
-# 	return title, name, ratio
+	for i in MYJSON:
+		title.append(i["title"])
+		name.append(i["name"])
+		ratio.append(i["ratio"])
+		res_w.append(i["res_w"])
+		res_h.append(i["res_h"])
+	return title, name, ratio
 
 def sentence_builder(radio,widthFix, heightFix, imagem):
 	original_width = imagem.width
@@ -125,7 +123,8 @@ class BooruPromptsScript(scripts.Script):
 
 	def __init__(self, res=(512, 512), **kwargs):
 		super().__init__(**kwargs)
-		self.t2i_w, self.t2i_h = res
+		self.t2i_w, self.t2i_h = res,res
+		self.i2i_w, self.i2i_h = res,res
 		
 	def title(self):
 		return("Proportion Ratio 1")
@@ -167,11 +166,11 @@ class BooruPromptsScript(scripts.Script):
 					with gr.Tab("Lista de Resoluções"):
 						with gr.Row():
 							     
-							gr.Textbox()
-								# for title, name, ratio in zip(teste()[0], teste()[1], teste()[2]):
-								# 	name =gr.Button(value=name+"-"+title,elem_id=ratio).style(full_width=False)
-									# name.click(greet, inputs=name, outputs=mytext) 
-								# image_output = gr.Image()  
+							mytext = gr.Textbox()
+							for title, name, ratio in zip(teste()[0], teste()[1], teste()[2]):
+								name =gr.Button(value=name+"-"+title,elem_id=ratio).style(full_width=False)
+								name.click(greet, inputs=name, outputs=mytext) 
+							image_output = gr.Image()  
 							gr.Markdown("Portraits")
 						image_button = gr.Button("Flip")
 		# send_prompt_btnx.click(sentence_builder, inputs=[bt_radio,txt_width,txt_height,img_input], outputs=[bt_html,self.t2i_w,self.t2i_h])
