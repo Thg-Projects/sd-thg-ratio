@@ -1,0 +1,43 @@
+[{
+    "title": "480p",
+    "name": "SD",
+    "ratio": "4:3",
+    "res_w": 640,
+    "res_h": 480 
+},{
+    "title": "720p",
+    "name": "HD",
+    "ratio": "16:9",
+    "res_w": 1280 ,
+    "res_h": 720 
+}, {
+    "title": "1080p",
+    "name": "Full HD",
+    "ratio": "16:9",
+    "res_w": 1920 ,
+    "res_h": 1080 
+}, {
+    "title": "1440p",
+    "name": "QHD",
+    "ratio": "16:9",
+    "res_w": 2560 ,
+    "res_h": 1440 
+},{
+    "title": "1080p",
+    "name": "2k",
+    "ratio": "1:1.77",
+    "res_w": 2048 ,
+    "res_h": 1080 
+}, {
+    "title": "4k",
+    "name": "UHD",
+    "ratio": "1:1.9",
+    "res_w": 3840 ,
+    "res_h": 2160 
+}, {
+    "title": "8k",
+    "name": "FHD",
+    "ratio": "16:9",
+    "res_w": 7680 ,
+    "res_h": 4320 
+}]
